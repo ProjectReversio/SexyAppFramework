@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 
 project(SexyAppFramework)
 
-include_directories(${CMAKE_SOURCE_DIR}/lib/directx8)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../lib/directx8)
 
 set(SRC_MAIN
 	# Sources
@@ -272,7 +272,7 @@ add_compile_definitions(SexyAppFramework _LIB)
 add_library(SexyAppFramework STATIC ${SRC_MAIN})
 
 set(SexyAppLibs
-	${CMAKE_SOURCE_DIR}/lib/directx8/d3d8.lib
+	${CMAKE_CURRENT_SOURCE_DIR}/../../lib/directx8/d3d8.lib
 	dsound
 	winmm
 	ws2_32
