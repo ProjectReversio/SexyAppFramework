@@ -1,5 +1,5 @@
 #include "DemoWidget.h"
-#include "Res.h"
+#include "../Res.h"
 #include "SexyAppFramework/WidgetManager.h"
 #include "SexyAppFramework/ButtonWidget.h"
 #include "V12DemoApp.h"

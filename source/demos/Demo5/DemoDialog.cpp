@@ -1,5 +1,5 @@
 #include "DemoDialog.h"
-#include "Res.h"
+#include "../Res.h"
 #include "GameApp.h"
 #include "SexyAppFramework/SexyAppBase.h"
 #include "SexyAppFramework/WidgetManager.h"

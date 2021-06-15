@@ -5,7 +5,7 @@
 #include "SexyAppFramework/Dialog.h"
 #include "SexyAppFramework/SWTri.h"
 #include "Board.h"
-#include "Res.h"
+#include "../Res.h"
 
 using namespace Sexy;
 

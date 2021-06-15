@@ -3,7 +3,7 @@
 #include "SexyAppFramework/ResourceManager.h"
 #include "SexyAppFramework/XMLParser.h"
 #include "Board.h"
-#include "Res.h"
+#include "../Res.h"
 
 using namespace Sexy;
 

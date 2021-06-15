@@ -11,7 +11,7 @@
 
 // Contains all the resources from the resources.xml file in our
 // properties directory. See that file for more information.
-#include "Res.h"
+#include "../Res.h"
 
 // The SexyAppFramework resides in the "Sexy" namespace. As a convenience,
 // you'll see in all the .cpp files "using namespace Sexy" to avoid

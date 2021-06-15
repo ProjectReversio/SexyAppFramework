@@ -1,7 +1,7 @@
 #include "Board.h"
 #include "XMLDemoApp.h"
-#include "..\SexyAppFramework\Graphics.h"
-#include "Res.h"
+#include "SexyAppFramework\Graphics.h"
+#include "../Res.h"
 
 using namespace Sexy;
 

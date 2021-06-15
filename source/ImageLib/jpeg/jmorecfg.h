@@ -184,7 +184,7 @@ typedef unsigned int JDIMENSION;
 /* a function used only in its module: */
 #define LOCAL(type)		static type
 
-#if !defined(_VISUALC_)
+#if !defined(_VISUALC_) && !defined(_MSC_VER)
 #	error Something is very very wrong. This header must only be used under Visual C++.
 #endif
 /**

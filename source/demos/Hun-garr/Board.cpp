@@ -2,7 +2,7 @@
 #pragma warning(disable:4018)
 #include "Board.h"
 #include "GameApp.h"
-#include "Res.h"
+#include "../Res.h"
 #include "LevelupEffect.h"
 #include "GameOverEffect.h"
 #include "OptionsDialog.h"

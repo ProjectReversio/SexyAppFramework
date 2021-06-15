@@ -1,9 +1,9 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
-#include "..\SexyAppFramework\Widget.h"
-#include "..\SexyAppFramework\ButtonListener.h"
-#include "..\SexyAppFramework\Rect.h"
+#include "SexyAppFramework\Widget.h"
+#include "SexyAppFramework\ButtonListener.h"
+#include "SexyAppFramework\Rect.h"
 
 namespace Sexy
 {

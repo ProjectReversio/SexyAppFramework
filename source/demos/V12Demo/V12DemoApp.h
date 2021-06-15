@@ -1,7 +1,7 @@
 #ifndef __V12DEMOAPP_H__
 #define __V12DEMOAPP_H__
 
-#include "..\SexyAppFramework\SexyAppBase.h"
+#include "SexyAppFramework\SexyAppBase.h"
 
 namespace Sexy
 {

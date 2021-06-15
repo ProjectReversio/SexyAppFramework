@@ -6,7 +6,7 @@
 #include "SexyAppFramework/ResourceManager.h"
 #include "SexyAppFramework/BassMusicInterface.h"
 #include "SexyAppFramework/Dialog.h"
-#include "Res.h"
+#include "../Res.h"
 
 using namespace Sexy;
 

@@ -4,7 +4,7 @@
 
 #include "LevelupEffect.h"
 #include "Board.h"
-#include "Res.h"
+#include "../Res.h"
 #include "SexyAppFramework/SexyAppBase.h"
 #include "SexyAppFramework/Graphics.h"
 #include "SexyAppFramework/Font.h"

@@ -1,0 +1,9 @@
+.vs
+.idea
+build
+game/*.exe
+game/*.ilk
+game/*.pdb
+demos/*.exe
+demos/*.ilk
+demos/*.pdb

@@ -1,6 +1,6 @@
 #include "TitleScreen.h"
 #include "GameApp.h"
-#include "Res.h"
+#include "../Res.h"
 #include "SexyAppFramework/Font.h"
 #include "SexyAppFramework/Graphics.h"
 #include "SexyAppFramework/Image.h"

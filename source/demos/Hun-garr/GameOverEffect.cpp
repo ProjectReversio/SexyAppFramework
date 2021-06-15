@@ -2,7 +2,7 @@
 #pragma warning(disable:4018)
 
 #include "GameOverEffect.h"
-#include "Res.h"
+#include "../Res.h"
 #include "Board.h"
 #include "SexyAppFramework/SexyAppBase.h"
 #include "SexyAppFramework/Graphics.h"

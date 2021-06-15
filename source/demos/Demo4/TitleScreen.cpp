@@ -4,7 +4,7 @@
 
 // Contains all the resources from the resources.xml file in our
 // properties directory. See that file for more information.
-#include "Res.h"
+#include "../Res.h"
 
 // Now that we're on our 4th demo, the reason for including the headers
 // below should be apparent. If you forgot, review demos 1-3.

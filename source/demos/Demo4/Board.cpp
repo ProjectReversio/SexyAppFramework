@@ -3,7 +3,7 @@
 
 // Contains all the resources from the resources.xml file in our
 // properties directory. See that file for more information.
-#include "Res.h"
+#include "../Res.h"
 
 // You should remember these files from the previous demos
 #include "SexyAppFramework/Graphics.h"

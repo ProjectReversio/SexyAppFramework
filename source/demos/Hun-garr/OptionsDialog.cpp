@@ -1,5 +1,5 @@
 #include "OptionsDialog.h"
-#include "Res.h"
+#include "../Res.h"
 #include "Board.h"
 #include "SexyAppFramework/SexyAppBase.h"
 #include "SexyAppFramework/WidgetManager.h"
