@@ -3,6 +3,8 @@
 #include "SexyAppBase.h"
 #include "Graphics.h"
 #include "NativeDisplay.h"
+#include "DDInterface.h"
+#include "D3DInterface.h"
 #include "Debug.h"
 #include "Quantize.h"
 #include "PerfTimer.h"

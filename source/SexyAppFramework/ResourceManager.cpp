@@ -1,4 +1,5 @@
 
+#include <memory>
 #include "ResourceManager.h"
 #include "XMLParser.h"
 #include "SoundManager.h"

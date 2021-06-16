@@ -99,24 +99,41 @@ set(SRC_MAIN
 	../ImageLib/zlib/zutil.c
 	../PakLib/PakInterface.cpp
 	
-	GraphicsBuild.cpp
-	#DDInterface.cpp
-	#Color.cpp
-	#D3DInterface.cpp
-	#D3DTester.cpp
-	#DDImage.cpp
-	#Font.cpp
-	#Graphics.cpp
-	#NativeDisplay.cpp
-	#Image.cpp
-	#ImageFont.cpp
-	#MemoryImage.cpp
-	#SysFont.cpp
-	#Quantize.cpp
-	#SharedImage.cpp
-	#D3D8Helper.cpp
-	
-	MiscBuildBase.cpp
+	DDInterface.cpp
+	Color.cpp
+	D3DInterface.cpp
+	D3DTester.cpp
+	DDImage.cpp
+	Font.cpp
+	Graphics.cpp
+	NativeDisplay.cpp
+	Image.cpp
+	ImageFont.cpp
+	MemoryImage.cpp
+	SysFont.cpp
+	Quantize.cpp
+	SharedImage.cpp
+	D3D8Helper.cpp
+
+	Flags.cpp
+	XMLParser.cpp
+	SexyMatrix.cpp
+	SEHCatcher.cpp
+	PropertiesParser.cpp
+	PerfTimer.cpp
+	MTRand.cpp
+	KeyCodes.cpp
+	HTTPTransfer.cpp
+	DirectXErrorString.cpp
+	Debug.cpp
+	CritSect.cpp
+	Common.cpp
+	Buffer.cpp
+	ResourceManager.cpp
+	ModVal.cpp
+	DescParser.cpp
+	Ratio.cpp
+
 	ogg/bitwise.c
 	ogg/block.c
 	ogg/codebook.c
@@ -133,19 +150,33 @@ set(SRC_MAIN
 	ogg/vorbisfile.c
 	ogg/window.c
 	SexyAppBase.cpp
-	
-	SoundBuild.cpp
-	#DSoundManager.cpp
-	#DSoundInstance.cpp
-	#BassLoader.cpp
-	#BassMusicInterface.cpp
-	#FModLoader.cpp
-	#FModMusicInterface.cpp
-	#FModSoundInstance.cpp
-	#MusicInterface.cpp
+
+	DSoundManager.cpp
+	DSoundInstance.cpp
+	BassLoader.cpp
+	BassMusicInterface.cpp
+	FModLoader.cpp
+	FModMusicInterface.cpp
+	FModSoundInstance.cpp
+	MusicInterface.cpp
 	
 	SWTri.cpp
-	WidgetBuildBase.cpp
+	WidgetManager.cpp
+	Widget.cpp
+	TextWidget.cpp
+	Slider.cpp
+	ScrollbuttonWidget.cpp
+	ScrollbarWidget.cpp
+	ListWidget.cpp
+	Insets.cpp
+	HyperlinkWidget.cpp
+	EditWidget.cpp
+	Checkbox.cpp
+	ButtonWidget.cpp
+	Dialog.cpp
+	DialogButton.cpp
+	FlashWidget.cpp
+	WidgetContainer.cpp
 
 	# Headers
 	../ImageLib/ImageLib.h

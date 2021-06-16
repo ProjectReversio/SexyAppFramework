@@ -1,4 +1,4 @@
-#define INITGUID
+#include <initguid.h>
 
 #include "DDInterface.h"
 #include "DDImage.h"

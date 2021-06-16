@@ -7,6 +7,7 @@
 #include "SexyAppBase.h"
 #include "Debug.h"
 #include "PerfTimer.h"
+#include "AutoCrit.h"
 
 #pragma warning(disable:4005) // macro redefinition
 #pragma warning(disable:4244) // conversion possible loss of data
