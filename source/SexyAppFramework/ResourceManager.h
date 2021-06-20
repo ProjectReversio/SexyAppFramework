@@ -40,6 +40,7 @@ protected:
 
 	struct BaseRes
 	{
+        int mRefCount = 0;
 		ResType mType;
 		std::string mId;
 		std::string mResGroup;
@@ -51,7 +52,13 @@ protected:
 		virtual void DeleteResource() { }
 	};
 
-	struct ImageRes : public BaseRes
+    struct ResourceRef
+    {
+        void *mBaseResP;
+    };
+
+
+    struct ImageRes : public BaseRes
 	{
 		SharedImageRef mImage;
 		std::string mAlphaImage;
@@ -135,6 +142,8 @@ protected:
 	virtual bool			ParseSoundResource(XMLElement &theElement);
 	virtual bool			ParseImageResource(XMLElement &theElement);
 	virtual bool			ParseFontResource(XMLElement &theElement);
+    virtual bool			ParsePopAnimResource(XMLElement &theElement);
+    virtual bool			ParsePIEffectResource(XMLElement &theElement);
 	virtual bool			ParseSetDefaults(XMLElement &theElement);
 	virtual bool			ParseResources();
 
@@ -147,6 +156,7 @@ protected:
 	virtual bool			DoLoadImage(ImageRes *theRes);
 	virtual bool			DoLoadFont(FontRes* theRes);
 	virtual bool			DoLoadSound(SoundRes* theRes);
+    virtual bool			DoLoadResource(BaseRes* theRes, bool* fromProgram);
 
 	int						GetNumResources(const std::string &theGroup, ResMap &theMap);
 
@@ -185,6 +195,11 @@ public:
 	SharedImageRef			GetImage(const std::string &theId);
 	int						GetSound(const std::string &theId);
 	Font*					GetFont(const std::string &theId);
+
+    BaseRes* GetBaseRes(int type, const std::string &theId);
+    ResourceRef* GetFontRef(const std::string &theId);
+    ResourceRef* GetResourceRef(int type, const std::string &theId);
+    ResourceRef* GetResourceRef(BaseRes* base);
 	
 	// Returns all the XML attributes associated with the image
 	const XMLParamMap&		GetImageAttributes(const std::string &theId);

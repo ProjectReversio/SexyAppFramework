@@ -443,6 +443,24 @@ bool ResourceManager::ParseFontResource(XMLElement &theElement)
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+bool ResourceManager::ParsePopAnimResource(XMLElement &theElement)
+{
+    // TODO: Implement ParsePopAnimResource
+
+    return true;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+bool ResourceManager::ParsePIEffectResource(XMLElement &theElement)
+{
+    // TODO: Implement ParsePIEffectResource
+
+    return true;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 bool ResourceManager::ParseSetDefaults(XMLElement &theElement)
 {
 	XMLParamMap::iterator anItr;
@@ -502,6 +520,28 @@ bool ResourceManager::ParseResources()
 				if (aXMLElement.mType != XMLElement::TYPE_END)
 					return Fail("Unexpected element found.");
 			}
+            else if (aXMLElement.mValue == _S("PopAnim"))
+            {
+                if (!ParsePopAnimResource(aXMLElement))
+                    return false;
+
+                if (!mXMLParser->NextElement(&aXMLElement))
+                    return false;
+
+                if (aXMLElement.mType != XMLElement::TYPE_END)
+                    return Fail("Unexpected element found.");
+            }
+            else if (aXMLElement.mValue == _S("PIEffect"))
+            {
+                if (!ParsePIEffectResource(aXMLElement))
+                    return false;
+
+                if (!mXMLParser->NextElement(&aXMLElement))
+                    return false;
+
+                if (aXMLElement.mType != XMLElement::TYPE_END)
+                    return Fail("Unexpected element found.");
+            }
 			else if (aXMLElement.mValue == _S("SetDefaults"))
 			{
 				if (!ParseSetDefaults(aXMLElement))
@@ -872,7 +912,7 @@ bool ResourceManager::DoLoadFont(FontRes* theRes)
 		if (strncmp(theRes->mPath.c_str(),"!ref:",5)==0)
 		{
 			std::string aRefName = theRes->mPath.substr(5);
-			Font *aRefFont = GetFont(aRefName);
+			Font *aRefFont = ((FontRes*)GetFontRef(aRefName)->mBaseResP)->mFont;
 			if (aRefFont==NULL)
 				return Fail("Ref font not found: " + aRefName);
 
@@ -920,6 +960,40 @@ bool ResourceManager::DoLoadFont(FontRes* theRes)
 
 	ResourceLoadedHook(theRes);
 	return true;
+}
+
+bool ResourceManager::DoLoadResource(BaseRes* theRes, bool* fromProgram)
+{
+    if (theRes->mFromProgram)
+    {
+        *fromProgram = true;
+        return true;
+    }
+
+    bool result;
+
+    switch (theRes->mType)
+    {
+        case ResType_Image:
+            SEXY_PERF_BEGIN("ResourceManager::DoLoadResource(ResType_Image)");
+            result = DoLoadImage((ImageRes*)theRes);
+            SEXY_PERF_END("ResourceManager::DoLoadResource(ResType_Image)");
+            break;
+        case ResType_Sound:
+            SEXY_PERF_BEGIN("ResourceManager::DoLoadResource(ResType_Sound)");
+            result = DoLoadSound((SoundRes*)theRes);
+            SEXY_PERF_END("ResourceManager::DoLoadResource(ResType_Sound)");
+            break;
+        case ResType_Font:
+            SEXY_PERF_BEGIN("ResourceManager::DoLoadResource(ResType_Font)");
+            result = DoLoadFont((FontRes*)theRes);
+            SEXY_PERF_END("ResourceManager::DoLoadResource(ResType_Font)");
+            break;
+        default:
+            result = false;
+    }
+
+    return result;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1146,6 +1220,66 @@ Font* ResourceManager::GetFont(const std::string &theId)
 		return ((FontRes*)anItr->second)->mFont;
 	else
 		return NULL;
+}
+
+ResourceManager::BaseRes* ResourceManager::GetBaseRes(int type, const std::string &theId)
+{
+    switch (type)
+    {
+        case ResType_Image:
+        {
+            ResMap::iterator anItr = mImageMap.find(theId);
+            if (anItr != mImageMap.end())
+                return (ImageRes*)anItr->second;
+            else
+                return NULL;
+        }
+        case ResType_Sound:
+        {
+            ResMap::iterator anItr = mSoundMap.find(theId);
+            if (anItr != mSoundMap.end())
+                return (SoundRes*)anItr->second;
+            else
+                return NULL;
+        }
+        case ResType_Font:
+        {
+            ResMap::iterator anItr = mFontMap.find(theId);
+            if (anItr != mFontMap.end())
+                return (FontRes*)anItr->second;
+            else
+                return NULL;
+        }
+    }
+
+    return NULL;
+}
+
+ResourceManager::ResourceRef* ResourceManager::GetFontRef(const std::string &theId)
+{
+    return GetResourceRef(2, theId);
+}
+
+ResourceManager::ResourceRef* ResourceManager::GetResourceRef(int type, const std::string &theId)
+{
+    BaseRes* base = GetBaseRes(type, theId);
+    if (!base)
+        return new ResourceRef();
+
+    return GetResourceRef(base);
+}
+
+ResourceManager::ResourceRef* ResourceManager::GetResourceRef(BaseRes* base)
+{
+    ResourceRef* ref = new ResourceRef();
+
+    bool fromProgram;
+    if (base->mRefCount == 0)
+        DoLoadResource(base, &fromProgram);
+
+    ref->mBaseResP = base;
+    base->mRefCount++;
+    return ref;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
